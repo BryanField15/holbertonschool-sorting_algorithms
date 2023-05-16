@@ -12,7 +12,7 @@ void insertion_sort_list(listint_t **list)
 	listint_t *sectemp;
 	int k;
 
-	if (*list == NULL)
+	if (list == NULL)
 	{
 		return;
 	}
