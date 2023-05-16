@@ -1,5 +1,9 @@
 #include "sort.h"
 
+/**
+ * insertion_sort_list - sort linked list using insertion method
+ * @list: pointer to pointer to list
+ */
 void insertion_sort_list(listint_t **list)
 {
 	listint_t *temp;
@@ -26,15 +30,15 @@ void insertion_sort_list(listint_t **list)
 					*list = sectemp;
 					sectemp->prev = NULL;
 				}
-				if (sectemp->next != NULL)
-				{
-					sectemp->next->prev = temp;
-					temp->next = sectemp->next;
-				}
-				else
+				if (sectemp->next == NULL)
 				{
 					temp->next = NULL;
+					temp->prev = sectemp;
+					sectemp->next = temp;
+					return;
 				}
+				sectemp->next->prev = temp;
+				temp->next = sectemp->next;
 				temp->prev = sectemp;
 				sectemp->next = temp;
 				print_list(*list);
