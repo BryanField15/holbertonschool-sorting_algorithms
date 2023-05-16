@@ -10,10 +10,18 @@ void insertion_sort_list(listint_t **list)
 	listint_t *sectemp;
 	int k;
 
+	if (*list == NULL)
+	{
+		return;
+	}
 	temp = *list;
 	sectemp = temp->next;
 
-	if (temp == NULL || (temp->prev == NULL && temp->next == NULL))
+	if (temp->prev == NULL && temp->next == NULL)
+	{
+		return;
+	}
+	if (temp->prev == NULL && sectemp->next == NULL)
 	{
 		return;
 	}
