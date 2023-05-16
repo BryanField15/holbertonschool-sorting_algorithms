@@ -8,7 +8,7 @@ void insertion_sort_list(listint_t **list)
 	temp = *list;
 	sectemp = temp->next;
 	int k;
-	
+
 	k = 0;
 	while (sectemp->next != NULL)
 	{
@@ -16,12 +16,27 @@ void insertion_sort_list(listint_t **list)
 		{
 			if (temp->n > sectemp->n)
 			{
-				temp->next = sectemp->next;
-				sectemp->next->prev = temp->next;
-				sectemp->next = temp;
+				if (temp->prev != NULL)
+				{
+					temp->prev->next = sectemp;
+					sectemp->prev = temp->prev;
+				}
+				else
+				{
+					*list = sectemp;
+					sectemp->prev = NULL;
+				}
+				if (sectemp->next != NULL)
+				{
+					sectemp->next->prev = temp;
+					temp->next = sectemp->next;
+				}
+				else
+				{
+					temp->next = NULL;
+				}
 				temp->prev = sectemp;
-				temp->prev->next = sectemp;
-				sectemp->prev = temp->prev;
+				sectemp->next = temp;
 				print_list(*list);
 				k = 1;
 			}
@@ -31,5 +46,8 @@ void insertion_sort_list(listint_t **list)
 				sectemp = sectemp->next;
 			}
 		}
+		temp = *list;
+		sectemp = temp->next;
+		k = 0;
 	}
 }
