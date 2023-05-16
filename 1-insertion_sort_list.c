@@ -9,9 +9,14 @@ void insertion_sort_list(listint_t **list)
 	listint_t *temp;
 	listint_t *sectemp;
 	int k;
-	
+
 	temp = *list;
 	sectemp = temp->next;
+
+	if (*list == NULL || (temp->prev == NULL && temp->next == NULL))
+	{
+		return;
+	}
 	k = 0;
 	while (sectemp->next != NULL)
 	{
