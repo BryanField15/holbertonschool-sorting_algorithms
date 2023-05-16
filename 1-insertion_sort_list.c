@@ -3,7 +3,9 @@
 /**
  * insertion_sort_list - sort linked list using insertion method
  * @list: pointer to pointer to list
+ * Return: void
  */
+
 void insertion_sort_list(listint_t **list)
 {
 	listint_t *temp;
@@ -21,11 +23,11 @@ void insertion_sort_list(listint_t **list)
 	{
 		return;
 	}
-	if (temp->prev == NULL && sectemp->next == NULL)
+/*	if (temp->prev == NULL && sectemp->next == NULL)
 	{
 		return;
 	}
-	k = 0;
+*/	k = 0;
 	while (sectemp->next != NULL)
 	{
 		while (k == 0)
