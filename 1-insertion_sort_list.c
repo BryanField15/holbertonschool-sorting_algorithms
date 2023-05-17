@@ -23,10 +23,13 @@ void insertion_sort_list(listint_t **list)
 	{
 		if (temp->n >= sectemp->n)
 		{
-			temp->next = NULL;
+			*list = sectemp;
 			sectemp->prev = NULL;
 			temp->prev = sectemp;
 			sectemp->next = temp;
+			temp->next = NULL;
+			print_list(*list);
+
 		}
 		return;
 	}
