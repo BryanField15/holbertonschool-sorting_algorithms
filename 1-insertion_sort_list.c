@@ -12,23 +12,24 @@ void insertion_sort_list(listint_t **list)
 	listint_t *sectemp;
 	int k;
 
-	if (list == NULL || (*list) == NULL || (*list)->next == NULL)
+	if (list == NULL || (*list) == NULL /*|| (*list)->next == NULL*/)
 	{
 		return;
 	}
 
 	temp = *list;
 	sectemp = temp->next;
-
-/*	if (temp->prev == NULL && temp->next == NULL)
-	{
-		return;
-	}
 	if (temp->prev == NULL && sectemp->next == NULL)
 	{
+		if (temp->n >= sectemp->n)
+		{
+			temp->next = NULL;
+			sectemp->prev = NULL;
+			temp->prev = sectemp;
+			sectemp->next = temp;
+		}
 		return;
 	}
-*/
 	k = 0;
 	while (sectemp->next != NULL)
 	{
